@@ -19,11 +19,12 @@ class FileFilterServiceTest {
             "world\n" +
             "hello\n" +
             "again\n" +
-            "banana";
+            "banana\n" +
+            "123";
     @Test
     public  void testFileFilter() throws IOException {
         FileFilterService fileFilterService = new FileFilterService();
-        fileFilterService.filterFile("input.txt","banned", "outputTest.txt");
+        fileFilterService.filterFile("src/test/java/resources/input.txt","banned", "outputTest.txt");
         Path path = Paths.get("outputTest.txt");
         String read = Files.readAllLines(path).stream().collect(Collectors.joining("\n"));
         assertEquals(read, result);
