@@ -42,7 +42,7 @@ public class Main {
             FileFilterService fileFilterService = applicationContext.getBean(FileFilterService.class);
             fileFilterService.filterFile(inputFilePath, bannedWord, outputFilePath);
         } catch (ParseException e) {
-            formatter.printHelp("utility-name", options);
+            formatter.printHelp("filter-application", options);
             System.exit(1);
         }
 
