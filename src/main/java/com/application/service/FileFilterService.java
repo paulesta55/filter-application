@@ -10,21 +10,17 @@ import java.util.regex.Pattern;
 @Service
 public class FileFilterService {
 
-    private static Pattern pattern;
-
-    private static Matcher matcher;
-
     private static Logger LOGGER = Logger.getLogger(FileFilterService.class.getName());
 
     public void filterFile(String inputFilePath, String bannedWord, String outputFilePath)  {
-        pattern = Pattern.compile(bannedWord);
+        Pattern pattern = Pattern.compile(bannedWord);
         File file = new File(inputFilePath);
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
             FileWriter fw = new FileWriter(outputFilePath);
             while( (line=br.readLine())!=null) {
-                matcher = pattern.matcher(line);
+                Matcher matcher = pattern.matcher(line);
                 if( !matcher.find()) {
                     fw.append(line+'\n');
                 }
